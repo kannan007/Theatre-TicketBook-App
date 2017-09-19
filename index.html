@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Welcome to My Ticket Booking App</title>
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+  <body ng-app="MyApp" ng-controller="MainController">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 form-section">
+          <form name="BookingForm" class="form-inline" novalidate>
+            <div class="form-group">
+              <input class="form-control" type="text" name="name" ng-model="name" placeholder="Type your name" required>
+              <span ng-show="BookingForm.name.$error.required && !BookingForm.name.$pristine">Name is Required</span>
+            </div>
+            <div class="form-group">
+              <input class="form-control" type="number" name="seatno" placeholder="Type Number of Seats" ng-model="seatscount" required>
+              <span ng-show="BookingForm.seatno.$error.required && !BookingForm.seatno.$pristine">SeatNo is Required</span>
+            </div>
+            <button type="submit" ng-click="SeatSelection()" ng-disabled="BookingForm.$invalid" class="btn btn-default selection-button">Start Selecting</button>
+          </form>
+        </div>
+      </div>
+      <div class="row selection-section">
+        <div class="col-md-1 rows-section">
+          <p class="rows" ng-repeat="row in Rows">{{row}}</p>
+        </div>
+        <div class="col-md-11 columns-section">
+          <p class="columns col-md-1" ng-repeat="column in Columns">{{column}}</p>
+        </div>
+        <div class="col-md-11 seats-section" ng-repeat="seat in Seats">
+          <p ng-class="{'body red':row.booked, 'body normal':row.booked===false}" class="seats col-md-1" ng-model="row.booked" id="{{key}}" ng-repeat="(key,row) in seat" ng-click="SelectedSeat($event,$index)" ng-disabled="row.booked"></p>
+        </div>
+        <div>
+          <button type="button" class="btn btn-default confirm-button" ng-click="ConfirmBooking()">Submit</button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 booked-section">
+          <table class="table">
+            <tr>
+              <th>Name</th>
+              <th>Seat Count</th>
+              <th>Seat Details</th>
+            </tr>
+            <tr ng-show="BookedSeats.length===0"><td><h1>Lists are empty at the moment</h1></td></tr>
+            <tr ng-repeat="x in BookedSeats">
+              <td>{{x.name}}</td>
+              <td>{{x.noofseats}}</td>
+              <td>{{x.detailsofseats}}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="js/angular.min.js"></script>
+  <script src="js/jquery.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/app.js"></script>
+</html>

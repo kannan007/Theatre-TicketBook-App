@@ -1,0 +1,45 @@
+body {
+  margin: 50px 0;
+}
+body .red {
+  background-color: red;
+}
+body .normal {
+  background-color: white;
+}
+body .form-section {
+  margin: 0 0 0 40px;
+}
+body .form-section form input {
+  margin-left: 10px;
+}
+body .form-section form button {
+  margin-left: 10px;
+}
+body .selection-section {
+  margin: 20px 0 0 0;
+}
+body .selection-section .rows-section {
+  margin: 30px 0 0 0;
+  padding-right: 0;
+}
+body .selection-section .rows-section p.rows {
+  text-align: center;
+  height: 25px;
+  margin: 0 0 8px 0;
+}
+body .selection-section .columns-section .columns {
+  text-align: center;
+}
+body .selection-section .seats-section .seats {
+  padding: 10px 0;
+  border: 1px solid blue;
+  width: 7.33%;
+  margin-left: 10px;
+}
+body .selection-section .confirm-button {
+  margin-top: 30px;
+}
+body .booked-section {
+  margin-top: 50px;
+}
